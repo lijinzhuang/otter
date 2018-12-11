@@ -384,7 +384,12 @@ public class MessageParser {
                     eventData.setExecuteTime(entry.getHeader().getExecuteTime());
                     eventData.setSql(rowChange.getSql());
                     eventData.setDdlSchemaName(rowChange.getDdlSchemaName());
-                    eventData.setTableId(dataMedia.getId());
+                    List<String> skipTableName = Arrays.asList("yz_order_history","yz_order");
+                    if(skipTableName.contains(tableName) && null == dataMedia) {
+                        eventData.setTableId(0);
+                    }else{
+                        eventData.setTableId(dataMedia.getId());
+                    }
                     return Arrays.asList(eventData);
                 } else {
                     return null;
