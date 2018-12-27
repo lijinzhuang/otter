@@ -384,7 +384,8 @@ public class MessageParser {
                     eventData.setExecuteTime(entry.getHeader().getExecuteTime());
                     eventData.setSql(rowChange.getSql());
                     eventData.setDdlSchemaName(rowChange.getDdlSchemaName());
-                    List<String> skipTableName = Arrays.asList("yz_order_history","yz_order");
+//                    List<String> skipTableName = Arrays.asList("yz_order_history","yz_order");
+                    List<String> skipTableName = Arrays.asList("mc_wechat_bank_type","mc_wechat_mcc_new","mc_wechat_mcc_old");
                     if(skipTableName.contains(tableName) && null == dataMedia) {
                         eventData.setTableId(0);
                     }else{
